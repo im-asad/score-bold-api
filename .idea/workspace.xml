@@ -2,21 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ad4db99-1e4f-4c7b-848b-886c436f4d5e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/asada.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/AnswerMedia.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/Media.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/QuestionMedia.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/general.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/file-upload/aws.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/file-upload/upload.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Answer.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Answer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Question.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Question.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/Chapter.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/Chapter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/Question.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/Question.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -84,8 +70,16 @@
       <workItem from="1571309865059" duration="1494000" />
       <workItem from="1571430010302" duration="3833000" />
       <workItem from="1571469678498" duration="11257000" />
-      <workItem from="1571601211679" duration="10000" />
+      <workItem from="1571601211679" duration="801000" />
     </task>
+    <task id="LOCAL-00001" summary="route to upload file to DO space">
+      <created>1571601263799</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1571601263799</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -103,5 +97,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="route to upload file to DO space" />
+    <option name="LAST_COMMIT_MESSAGE" value="route to upload file to DO space" />
   </component>
 </project>

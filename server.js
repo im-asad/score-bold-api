@@ -94,7 +94,7 @@ sequelize.sync()
         });
 
         app.get('/', function(req, res) {
-            res.sendFile(path.join(__dirname, '../Profit-Pro-APP/build', 'index.html'))
+            res.sendFile(path.join(__dirname, '../scorebold-app/build', 'index.html'))
         });
 
         // Listening on port 9090
