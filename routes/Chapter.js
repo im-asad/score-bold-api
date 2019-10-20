@@ -14,7 +14,7 @@ module.exports = (db) => {
 
     router.get("/api/chapter/:chapterId", async (req, res) => {
         const {chapterId} = req.params;
-        const options = {where: {chapterId}, include: [{all: true}, { model: Question, include: [{all: true}]}]};
+        const options = {where: {chapterId}, include: [{all: true}, { model: Question, include: [{all: true}, { model: Answer, include: [{all: true}]}]}]};
         const chapter = await Chapter.findOne(options);
         res.status(200).json({message: "Chapter have been retrieved.", chapter});
     });

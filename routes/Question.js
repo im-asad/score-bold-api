@@ -1,10 +1,18 @@
 const router = require("express").Router();
 
-const sequelize = require('sequelize');
-const Op = sequelize.Op;
+const multer = require('multer');
+const upload = multer();
+
+const uploadService = require("../services/file-upload/upload");
 
 module.exports = (db) => {
-    const {Question, Answer, QuestionAnswer, ChapterQuestion} = db;
+    const {Question, Answer, QuestionAnswer, ChapterQuestion, Media, QuestionMedia, AnswerMedia} = db;
+
+    router.post("/api/question/upload", upload.any(), async (req, res) => {
+        console.log("THIS IS THE REQUEST: ", req.files[0]);
+
+        res.json({status: 200, message: "Uploaded successfully."})
+    });
 
     router.get("/api/question", async (req, res) => {
         const options = {include: [{all: true}]};
@@ -14,24 +22,43 @@ module.exports = (db) => {
 
     router.get("/api/question/:questionId", async (req, res) => {
         const {questionId} = req.params;
-        const options = {where: {questionId}, include: [{all: true}]};
+        const options = {where: {questionId}, include: [{all: true}, { model: Question, include: [{all: true}, { model: Answer, include: [{all: true}]}]}]};
         const question = await Question.findOne(options);
         res.status(200).json({message: "Question has been retrieved.", question});
     });
 
-    router.post("/api/question/:chapterId", async (req, res) => {
+    router.post("/api/question/:courseId/:chapterId", upload.any(), async (req, res) => {
         const {chapterId} = req.params;
-        const {question, correctAnswerIndex, reason, formOptions} = req.body;
+        let {question, correctAnswerIndex, reason, formOptions, files} = req.body;
         let questionAnswers = [], correctAnswerId = null;
         const createdQuestion = await Question.create({question});
         await ChapterQuestion.create({questionId: createdQuestion.questionId, chapterId});
 
-        for (let i = 0; i < formOptions.length; i++) {
-            const answer = await Answer.create({answer: formOptions[i]});
-            if (correctAnswerIndex === i) {
-                correctAnswerId = answer.answerId;
+        if (files["question"] && files["question"].length > 0) {
+            for (let j = 0; j < files["question"].length; j++) {
+                const createdMedia = await Media.create({url: files["question"][j]});
+                await QuestionMedia.create({mediaId: createdMedia.mediaId, questionId: createdQuestion.questionId});
             }
-            questionAnswers.push({answerId: answer.answerId, questionId: createdQuestion.questionId});
+        }
+
+        if (formOptions) {
+            for (let i = 0; i < formOptions.length; i++) {
+                const option = formOptions[i];
+
+                const answer = await Answer.create({answer: option});
+                if (correctAnswerIndex === i) {
+                    correctAnswerId = answer.answerId;
+                }
+
+                questionAnswers.push({answerId: answer.answerId, questionId: createdQuestion.questionId});
+
+                if (files[option] && files[option].length > 0) {
+                    for (let j = 0; j < files[option].length; j++) {
+                        const createdMedia = await Media.create({url: files[option][j]});
+                        await AnswerMedia.create({mediaId: createdMedia.mediaId, answerId: answer.answerId});
+                    }
+                }
+            }
         }
 
         await QuestionAnswer.bulkCreate(questionAnswers);

@@ -22,6 +22,7 @@ module.exports = (sequelize) => {
         Question.belongsToMany(models.Chapter, {through: models.ChapterQuestion, foreignKey: "questionId"});
         Question.belongsToMany(models.Answer, {through: models.QuestionAnswer, foreignKey: "questionId"});
         Question.belongsTo(models.Answer, {foreignKey: "answerId", as: 'ActualAnswer'});
+        Question.belongsToMany(models.Media, {through: models.QuestionMedia, foreignKey: "questionId"});
     };
 
     return Question;

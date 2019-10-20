@@ -3,10 +3,9 @@ const Sequelize = require("sequelize");
 
 const app = express();
 const session = require('express-session');
+
 const path = require('path');
 const seedDB = require("./seed");
-console.log("================================================== PROCESS ENV =========================================================");
-console.log(process.env);
 /* Connect to MySQL Database */
 
 let sequelize;
@@ -16,7 +15,7 @@ if (process.env.NODE_ENV === "production") {
         dialect: 'mysql',
     });
 } else {
-    sequelize = new Sequelize("eta_db", "root", "1234", {
+    sequelize = new Sequelize("scorebold_production", "root", "1234", {
         host: "localhost",
         dialect: 'mysql',
     });
@@ -36,7 +35,10 @@ const db = {
     Question: sequelize.import("./models/Question"),
     ChapterQuestion: sequelize.import("./models/ChapterQuestion"),
     Answer: sequelize.import("./models/Answer"),
-    QuestionAnswer: sequelize.import("./models/QuestionAnswer")
+    QuestionAnswer: sequelize.import("./models/QuestionAnswer"),
+    Media: sequelize.import("./models/Media"),
+    QuestionMedia: sequelize.import("./models/QuestionMedia"),
+    AnswerMedia: sequelize.import("./models/AnswerMedia")
 };
 
 Object.keys(db).forEach((model) => {
@@ -45,10 +47,11 @@ Object.keys(db).forEach((model) => {
     }
 });
 
-sequelize.sync({force: true})
+// sequelize.sync({force: true})
+sequelize.sync()
     .then(async () => {
         const passport = require('./services/passport')(db);
-        await seedDB(db);
+        // await seedDB(db);
         app.use((req, res, next) => {
             res.header('Access-Control-Allow-Credentials', 'true');
             res.header('Access-Control-Allow-Origin', '*');
@@ -72,17 +75,14 @@ sequelize.sync({force: true})
         app.use(passport.initialize());
         app.use(passport.session());
 
-        // app.use( (req, res, next) => {
-        //     console.log('req.session', req.session);
-        //     return next();
-        // });
-
         const authRoutes = require("./routes/auth")(db);
+        const generalRoutes = require("./routes/general")(db);
         const courseRoutes = require("./routes/Course")(db);
         const chapterRoutes = require("./routes/Chapter")(db);
         const questionRoutes = require("./routes/Question")(db);
         const answerRoutes = require("./routes/Answer")(db);
         app.use(authRoutes);
+        app.use(generalRoutes);
         app.use(courseRoutes);
         app.use(chapterRoutes);
         app.use(questionRoutes);

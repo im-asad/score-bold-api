@@ -14,6 +14,7 @@ module.exports = (sequelize) => {
 
     Answer.associate = (models) => {
         Answer.belongsToMany(models.Question, {through: models.QuestionAnswer, foreignKey: "answerId"});
+        Answer.belongsToMany(models.Media, {through: models.AnswerMedia, foreignKey: "answerId"});
     };
 
     return Answer;
