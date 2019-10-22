@@ -72,7 +72,7 @@
       <workItem from="1571469678498" duration="11257000" />
       <workItem from="1571601211679" duration="2180000" />
       <workItem from="1571659758432" duration="1257000" />
-      <workItem from="1571726673286" duration="255000" />
+      <workItem from="1571726673286" duration="363000" />
     </task>
     <task id="LOCAL-00001" summary="route to upload file to DO space">
       <created>1571601263799</created>
@@ -88,7 +88,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571602147266</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="serve build">
+      <created>1571726940889</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1571726940889</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

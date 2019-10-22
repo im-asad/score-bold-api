@@ -47,11 +47,11 @@ Object.keys(db).forEach((model) => {
     }
 });
 
-// sequelize.sync({force: true})
-sequelize.sync()
+sequelize.sync({force: true})
+// sequelize.sync()
     .then(async () => {
         const passport = require('./services/passport')(db);
-        // await seedDB(db);
+        await seedDB(db);
         app.use((req, res, next) => {
             res.header('Access-Control-Allow-Credentials', 'true');
             res.header('Access-Control-Allow-Origin', '*');
