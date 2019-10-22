@@ -97,6 +97,10 @@ sequelize.sync({force: true})
             res.sendFile(path.join(__dirname, '../scorebold-app/build', 'index.html'))
         });
 
+        app.get('/*', function(req, res) {
+            res.sendFile(path.join(__dirname, '../scorebold-app/build', 'index.html'))
+        });
+
         // Listening on port 9090
         app.listen(process.env.PORT || 7000, () => {
             console.log('API Server Running.')
