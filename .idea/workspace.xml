@@ -70,7 +70,9 @@
       <workItem from="1571309865059" duration="1494000" />
       <workItem from="1571430010302" duration="3833000" />
       <workItem from="1571469678498" duration="11257000" />
-      <workItem from="1571601211679" duration="801000" />
+      <workItem from="1571601211679" duration="2180000" />
+      <workItem from="1571659758432" duration="1257000" />
+      <workItem from="1571726673286" duration="255000" />
     </task>
     <task id="LOCAL-00001" summary="route to upload file to DO space">
       <created>1571601263799</created>
@@ -79,7 +81,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571601263799</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="serve build">
+      <created>1571602147266</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1571602147266</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -100,6 +109,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="route to upload file to DO space" />
-    <option name="LAST_COMMIT_MESSAGE" value="route to upload file to DO space" />
+    <MESSAGE value="serve build" />
+    <option name="LAST_COMMIT_MESSAGE" value="serve build" />
   </component>
 </project>

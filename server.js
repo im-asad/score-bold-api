@@ -23,7 +23,7 @@ if (process.env.NODE_ENV === "production") {
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '../Profit-Pro-APP/build')));
+app.use(express.static(path.join(__dirname, '../scorebold-app/build')));
 // app.use(cors());
 
 // Importing Database Models
