@@ -45,16 +45,16 @@ module.exports = (db) => {
             for (let i = 0; i < formOptions.length; i++) {
                 const option = formOptions[i];
 
-                const answer = await Answer.create({answer: option});
+                const answer = await Answer.create({answer: option.value});
                 if (correctAnswerIndex === i) {
                     correctAnswerId = answer.answerId;
                 }
 
                 questionAnswers.push({answerId: answer.answerId, questionId: createdQuestion.questionId});
 
-                if (files[option] && files[option].length > 0) {
-                    for (let j = 0; j < files[option].length; j++) {
-                        const createdMedia = await Media.create({url: files[option][j]});
+                if (files[option.name] && files[option.name].length > 0) {
+                    for (let j = 0; j < files[option.name].length; j++) {
+                        const createdMedia = await Media.create({url: files[option.name][j]});
                         await AnswerMedia.create({mediaId: createdMedia.mediaId, answerId: answer.answerId});
                     }
                 }
